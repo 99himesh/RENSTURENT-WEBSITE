@@ -15,14 +15,18 @@ function App() {
   const HideCartHandler = () => {
     setCartIsShown(false);
   };
+  const ordershow=()=>{
+    return <h1>1332123</h1>
+}
+
   return (
-    <div>
-      {cartIsShown && <Cart onClose={HideCartHandler} />}
-      <Header onShowCart={ShowCartHandler} />
+    <CartProvider>
+       {cartIsShown && <Cart onClose={HideCartHandler}   />}
+       <Header onShowCart={ShowCartHandler} />
       <main>
         <Meals />
       </main>
-    </div>
+   </CartProvider>
   );
 }
 
