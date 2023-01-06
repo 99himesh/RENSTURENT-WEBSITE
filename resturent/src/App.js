@@ -1,4 +1,4 @@
-import React,{Fragment} from 'react';
+import React,{Fragment,useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './component/Layout/Header';
@@ -8,11 +8,20 @@ import Cart from './component/Cart/cart';
 
 
 function App() {
+   const [cartIsShown,setCartIsShown]= useState(false);
+
+
+   const ShowCartHandler=()=>{
+    setCartIsShown(true);
+   }
+   const HideCartHandler=()=>{
+    setCartIsShown(false);
+   }
   return (
     
     <Fragment >
-       <Cart/>
-     <Header/>
+      { cartIsShown &&  <Cart onClose={HideCartHandler}/>}
+     <Header onShowCart={ShowCartHandler}/>
      <main>
       <Meals/>
      </main>
